@@ -1,4 +1,4 @@
-# leapmotion-webinspector
+# 3D Web Inspector
 
 <p>3D Web Inspector lets you visualize and interact the DOM of any website by using your hands. Your hand gestures are recognized by Leap Motion.</p>
 

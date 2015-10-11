@@ -18,7 +18,7 @@
 <style>
 #_jarvis-wrap{perspective:800px;height:${parseInt(window.innerHeight)}px;background:none;}
 #_jarvis-wrap2{transform:translateY(-50px) translateZ(-300px);background:none;}
-#_jarvis{height:${parseInt(window.innerHeight)}px;background:${document.body.background};}
+#_jarvis{height:${parseInt(window.innerHeight)}px;background:${document.body.background};transition:transform 0.1s;}
 html,body{padding:0 !important;background:none !important;}
 *{transform-style:preserve-3d;background-color:rgba(77,105,122,0.02);}
 ._jarvis-node{box-shadow:0 1px 4px 1px rgba(0,0,0,0.15);outline:1px solid rgba(172,206,247,0.3);}
@@ -143,9 +143,9 @@ html,body{padding:0 !important;background:none !important;}
 		else if(e.which===68)
 			transform.rotateY+=5;
 		
-		else if(e.which===33) // increase height
+		else if(e.which===33||e.which===46) // increase height
 			transform.extrude+=5;
-		else if(e.which===34) // decrease height
+		else if(e.which===34||e.which===44) // decrease height
 			transform.extrude=Math.max(0,transform.extrude-5);
 		else if(e.which===189) // zoom out
 			transform.zoom-=0.1;

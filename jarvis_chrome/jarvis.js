@@ -324,8 +324,7 @@ html,body{padding:0 !important;background:none !important;}
              // $(window).trigger("j-zoom",parseFloat(hand.pinchStrength.toPrecision(2))-100*-1)
              if(parseFloat(hand.pinchStrength.toPrecision(2))*100 > 20 && two_hand === 1 && fist == 0) {
               $(window).trigger("j-zoom",parseFloat(hand.pinchStrength.toPrecision(2))*100);
-            }  
-          }
+            }
       };
 
 	Leap.loop({},frame => {

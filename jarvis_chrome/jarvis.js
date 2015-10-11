@@ -302,9 +302,9 @@ html,body{padding:0 !important;background:none !important;}
 
 
       var doZoom=function(frame) { 
-      	if(!frame.hands().length)
+      	if(!frame.hands.length)
       		return;
-      	var hand=frame.hands()[0];
+      	var hand=frame.hands[0];
           //console.log(hand.grabStrength * 100);   
           // console.log(hand.grabStrength * 100);
             if(hand.grabStrength * 100 < 95 && hand.grabStrength * 100 > 0){

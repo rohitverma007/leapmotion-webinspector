@@ -178,8 +178,14 @@ function runScript(){
             var a=e[u.id];
             var f=n.scrollTop;
             window.handsl = t;
+	    var count = 0;
             if( state === -1 && t.hands.length <= 1 && fist === 0){
-            	if(t.hands[0].fingers.length >= 4) {
+		for(var i = 0; i < t.hands[0].fingers.length; i++){
+			if (t.hands[0].fingers[i].extended === true){
+				count++;
+			}
+		}
+            	if(count >= 4) {
                 	if(u.tipPosition[1]-325>0){n.scrollTop=f-=150}
                 	if(u.tipPosition[1]-125>0){n.scrollTop=f-=5}
                 	if(u.tipPosition[1]-90<0){n.scrollTop=f+=5}

@@ -118,10 +118,141 @@ html,body{padding:0 !important;background:none !important;}
         });
     })
     .then(() => {
+
+
+
+/*************************************Scrolling*********************************************************/
+function runScript(){
+    var e={};
+    var t={};
+    var n=document.body;
+    Leap.loop(function(t){
+        var r={};
+        var i={};
+        for(var s=0, o=t.pointables.length; s!=o; s++){
+            var u=t.pointables[s];
+            var a=e[u.id];
+            var f=n.scrollTop;
+            if(document.hasFocus()){
+                if(u.tipPosition[1]-325>0){n.scrollTop=f-=150}
+                if(u.tipPosition[1]-125>0){n.scrollTop=f-=5}
+                if(u.tipPosition[1]-90<0){n.scrollTop=f+=5}
+            }
+        }
+    })
+}
+
+
+
+/*************************************Rotation*******************************************/
+    var state = -1;
+    var degreeX = 0, initX = degreeX , deltaX = 0;
+    var degreeY = 0, initY = degreeY , deltaY = 0;
+
+
+    function concatData(id, data){
+      return id + ": " + data + "<br>";
+    };
+
+    // var output = document.getElementById("output");
+    // var output2 = document.getElementById("output2");
+    var frameString = "", handString = "", fingerString = "";
+    var hand, finger;
+
+
+    function transformCSS (className, degree) {
+        var style = {
+            "-webkit-transform": "rotateY("+degree+"deg)",
+            "-moz-transform": "rotateY("+degree+"deg)",
+            "transform": "rotateY("+degree+"deg)"
+        }
+
+        return style;
+    };
+
+    function flipX(hasHand, handType, rollRadian) {
+        degreeX = (rollRadian * (180 / Math.PI));
+        deltaX = degreeX - initX;
+
+        // output.innerHTML = "X - Axis: " + degreeX;
+        if(Math.abs(deltaX) < 0.75){
+            deltaX = 0;
+        }
+
+        return deltaX;
+        // output2.innerHTML = "X - delta: " + deltaX;
+    };
+
+    function flipY(hasHand, handType, rollRadian) {
+        degreeY = (rollRadian * (180 / Math.PI));
+        deltaY = degreeY - initY;
+
+        // output3.innerHTML = "Y - Axis: " + degreeY;
+        if(Math.abs(deltaY) < 0.75){
+            deltaY = 0;
+        }
+
+        return deltaY;
+        // output4.innerHTML = "Y - delta: " + deltaY;
+    };
+
+
+    //Start and stop motion
+    Leap.loop({enableGestures: true},function (frame) {
+        // state machine
+
+        /*if(frame.valid && frame.gestures.length > 0){
+          frame.gestures.forEach(function(gesture){
+            switch (gesture.type){
+                case "circle":
+                    //output.innerHTML = "Circle Gesture";
+                    state *= -1;
+                    console.log("Circle Gesture");
+                   break;
+              }
+          });
+         }*/
+
+
+            switch(state) {
+                case 1:
+
+                    if(frame.hands.length > 0) {
+                        initX = degreeX;
+                        initY = degreeY;
+                        deltaX = flipX(true, frame.hands[0].type, frame.hands[0].pitch());
+                        deltaY = flipY(true, frame.hands[0].type, frame.hands[0].roll());
+                        initX += deltaX/4;
+                        initY += deltaY/4;
+                        $(window).trigger("j-rotate",{"x":deltaX/4, "y":deltaY/4})
+
+                    }
+                  break;
+                case 2:
+                  break;
+                default:
+            }
+
+        });
+
+/*******************************************************************************************************/
+
+
+
       Leap.loop({background: true}, {
-          hand: function(hand) {            
-              $(window).trigger("j-zoom",parseFloat(hand.pinchStrength.toPrecision(2))-100*-1)
+          hand: function(hand) {    
+          //console.log(hand.grabStrength * 100);   
+           console.log(hand.grabStrength * 100);
+            if(hand.grabStrength * 100 < 95 && hand.grabStrength * 100 > 0){
+                 
+                state = 1;
+            } else {
+                state = -1;
+            }
+             // $(window).trigger("j-zoom",parseFloat(hand.pinchStrength.toPrecision(2))-100*-1)
           }
       });
+
+
     })
 })(this);

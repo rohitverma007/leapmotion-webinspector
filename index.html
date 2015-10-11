@@ -10,6 +10,14 @@
   </head>
 
   <body>
+    <div class="fullscreen-bg">
+      <div class="overlay">
+      </div>
+      <video loop muted autoplay class="fullscreen-bg__video">
+          <source src="img/jarvisvideo.mp4" type="video/mp4">
+      </video>
+    </div>
+
     <div class="site-wrapper">
       <div class="site-wrapper-inner">
         <div class="cover-container">
@@ -65,7 +73,7 @@
           $("#destination").effect("shake");
           $("#warning").html("Sorry, the website you requested (" + destinationURL + ") does not allow visualization.");
           $("#warning").fadeIn(1);
-          $("#warning").fadeOut(5000);
+          $("#warning").fadeOut(7500);
           $('#destination').val("");
           $('#destination').focus();
         } else {

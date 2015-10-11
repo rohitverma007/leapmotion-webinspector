@@ -179,9 +179,11 @@ function runScript(){
             var f=n.scrollTop;
             window.handsl = t;
             if( state === -1 && t.hands.length <= 1 && fist === 0){
-                if(u.tipPosition[1]-325>0){n.scrollTop=f-=150}
-                if(u.tipPosition[1]-125>0){n.scrollTop=f-=5}
-                if(u.tipPosition[1]-90<0){n.scrollTop=f+=5}
+            	if(t.hands[0].fingers.length >= 4) {
+                	if(u.tipPosition[1]-325>0){n.scrollTop=f-=150}
+                	if(u.tipPosition[1]-125>0){n.scrollTop=f-=5}
+                	if(u.tipPosition[1]-90<0){n.scrollTop=f+=5}
+            	}
             }
 
             if(t.hands.length <= 1){

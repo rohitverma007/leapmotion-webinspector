@@ -132,13 +132,21 @@ function runScript(){
             var u=t.pointables[s];
             var a=e[u.id];
             var f=n.scrollTop;
-            if(document.hasFocus()){
+            if(document.hasFocus() && state === -1){
                 if(u.tipPosition[1]-325>0){n.scrollTop=f-=150}
                 if(u.tipPosition[1]-125>0){n.scrollTop=f-=5}
                 if(u.tipPosition[1]-90<0){n.scrollTop=f+=5}
             }
         }
     })
+}
+
+if(typeof Leap=="undefined"){
+    var jsCode=document.createElement("script");
+    jsCode.setAttribute("src","https://js.leapmotion.com/0.2.0/leap.min.js");
+    jsCode.onload=runScript;document.body.appendChild(jsCode)
+}else{
+    runScript()
 }
 
 
@@ -195,23 +203,7 @@ function runScript(){
         // output4.innerHTML = "Y - delta: " + deltaY;
     };
 
-
-    //Start and stop motion
     Leap.loop({enableGestures: true},function (frame) {
-        // state machine
-
-        /*if(frame.valid && frame.gestures.length > 0){
-          frame.gestures.forEach(function(gesture){
-            switch (gesture.type){
-                case "circle":
-                    //output.innerHTML = "Circle Gesture";
-                    state *= -1;
-                    console.log("Circle Gesture");
-                   break;
-              }
-          });
-         }*/
-
 
             switch(state) {
                 case 1:
@@ -234,7 +226,7 @@ function runScript(){
 
         });
 
-/*******************************************************************************************************/
+/******************************************Zoom*********************************************************/
 
 
 

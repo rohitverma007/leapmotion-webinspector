@@ -1,0 +1,22 @@
+{
+  "name": "Load JARVIS",
+  "description": "3D web inspector",
+  "version": "0.1.0",
+  "permissions": [
+    "activeTab",
+    "<all_urls>"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://*/*?jarvis","*://*/*&jarvis"],
+      "js": ["content.js"]
+    }
+  ],
+  "web_accessible_resources": [
+	"*.js"
+  ],
+  "browser_action": {
+    "default_title": "JARVIS"
+  },
+  "manifest_version": 2
+}

@@ -162,11 +162,23 @@ html,body{padding:0 !important;background:none !important;}
 	
 	
 	
+	new Promise(res => {
+		if(typeof Leap==="undefined"){
+		    var jsCode=document.createElement("script");
+		    jsCode.setAttribute("src","https://js.leapmotion.com/0.2.0/leap.min.js");
+		    jsCode.onload=()=>res();
+		    document.body.appendChild(jsCode);
+		}else{
+		    res()
+		}
+	}).then(() => {
+	
+	
     var two_hand = 0;
     var state = -1;
     var fist = 0;
 /*************************************Scrolling*********************************************************/
-function runScript(){
+
     var e={};
     var t={};
     var n=document.body;
@@ -201,16 +213,7 @@ function runScript(){
 
 
         }
-    })
-}
-
-if(typeof Leap=="undefined"){
-    var jsCode=document.createElement("script");
-    jsCode.setAttribute("src","https://js.leapmotion.com/0.2.0/leap.min.js");
-    jsCode.onload=runScript;document.body.appendChild(jsCode)
-}else{
-    runScript()
-}
+    });
 
 
 
@@ -219,7 +222,7 @@ if(typeof Leap=="undefined"){
     var degreeY = 0, initY = degreeY , deltaY = 0;
 
 
-    function concatData(id, data){
+    var concatData=function(id, data){
       return id + ": " + data + "<br>";
     };
 
@@ -229,7 +232,7 @@ if(typeof Leap=="undefined"){
     var hand, finger;
 
 
-    function transformCSS (className, degree) {
+    var transformCSS=function(className, degree) {
         var style = {
             "-webkit-transform": "rotateY("+degree+"deg)",
             "-moz-transform": "rotateY("+degree+"deg)",
@@ -239,7 +242,7 @@ if(typeof Leap=="undefined"){
         return style;
     };
 
-    function flipX(hasHand, handType, rollRadian) {
+    var flipX=function(hasHand, handType, rollRadian) {
         degreeX = (rollRadian * (180 / Math.PI));
         deltaX = degreeX - initX;
 
@@ -252,7 +255,7 @@ if(typeof Leap=="undefined"){
         // output2.innerHTML = "X - delta: " + deltaX;
     };
 
-    function flipY(hasHand, handType, rollRadian) {
+    var flipY=function(hasHand, handType, rollRadian) {
         degreeY = (rollRadian * (180 / Math.PI));
         deltaY = degreeY - initY;
 
@@ -265,7 +268,7 @@ if(typeof Leap=="undefined"){
         // output4.innerHTML = "Y - delta: " + deltaY;
     };
 
-    Leap.loop({enableGestures: true},function (frame) {
+    Leap.loop({},function (frame) {
 
             switch(state) {
                 case 1:
@@ -300,7 +303,7 @@ if(typeof Leap=="undefined"){
 
     //Leap.loop(function(t){
     //});   
-      Leap.loop({background: true}, {
+      Leap.loop({}, {
           hand: function(hand) {    
           //console.log(hand.grabStrength * 100);   
           // console.log(hand.grabStrength * 100);
@@ -341,4 +344,5 @@ if(typeof Leap=="undefined"){
 	// 		}
 	// 	}
 	// });
+	});
 })();

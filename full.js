@@ -96,7 +96,7 @@ html,body{padding:0 !important;background:none !important;}
         });
         
         $(window).on('j-zoom',(e,delta) => { // percent
-            transform.zoom*=delta/100;
+            transform.zoom = delta/100;
         });
         
         $(window).on('j-rotate',(e,delta) => { // percent
@@ -118,10 +118,15 @@ html,body{padding:0 !important;background:none !important;}
         });
     })
     .then(() => {
+
       Leap.loop({background: true}, {
           hand: function(hand) {            
-              $(window).trigger("j-zoom",parseFloat(hand.pinchStrength.toPrecision(2))-100*-1)
-          }
+            if(parseFloat(hand.pinchStrength.toPrecision(2))*100 > 20) {
+              $(window).trigger("j-zoom",parseFloat(hand.pinchStrength.toPrecision(2))*100);
+            }  
+      }
+
+
       });
     })
 })(this);

@@ -4,7 +4,7 @@
 
 <h2>How to install Jarvis Web</h2>
 <ol>
-<li>Download this repository.</li>
+<li>Clone this repository.</li>
 <li>Open Google Chrome.</li>
 <li>Go to Settings.</li>
 <li>Go to Extensions.</li>
@@ -14,7 +14,7 @@
 </ol>
 
 <h2>How to use Jarvis Web</h2>
-<p>Open the "index.html" using Google Chrome. Have fun.</p>
+<p>Open the "index.html" using Google Chrome. Have fun!</p>
 
 <hr/>
 

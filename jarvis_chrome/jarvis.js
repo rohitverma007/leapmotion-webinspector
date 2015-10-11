@@ -18,7 +18,7 @@
 <style>
 #_jarvis-wrap{perspective:800px;height:${parseInt(window.innerHeight)}px;background:none;}
 #_jarvis-wrap2{transform:translateY(-50px) translateZ(-300px);background:none;}
-#_jarvis{height:${parseInt(window.innerHeight)}px;background:${document.body.background};transition:transform 0.1s;}
+#_jarvis{height:${parseInt(window.innerHeight)}px;background:${document.body.background};transition:transform 0.05s;}
 html,body{padding:0 !important;background:none !important;}
 *{transform-style:preserve-3d;background-color:rgba(77,105,122,0.02);}
 ._jarvis-node{box-shadow:0 1px 4px 1px rgba(0,0,0,0.15);outline:1px solid rgba(172,206,247,0.3);}
@@ -125,13 +125,13 @@ html,body{padding:0 !important;background:none !important;}
 		var propagate=false;
 		// arrows
 		if(e.which===37)
-			transform.translateX-=10;
+			transform.translateX-=30;
 		else if(e.which===38)
-			transform.translateY-=10;
+			transform.translateY-=30;
 		else if(e.which===39)
-			transform.translateX+=10;
+			transform.translateX+=30;
 		else if(e.which===40)
-			transform.translateY+=10;
+			transform.translateY+=30;
 		
 		// wasd
 		else if(e.which===87)

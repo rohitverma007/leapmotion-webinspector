@@ -5,7 +5,7 @@
 <h2>How to install Jarvis Web</h2>
 <ol>
 <li>Download this repository.</li>
-<li>Open Chrome browser.</li>
+<li>Open Google Chrome.</li>
 <li>Go to Settings.</li>
 <li>Go to Extensions.</li>
 <li>Check "Developer mode".</li>
@@ -14,7 +14,9 @@
 </ol>
 
 <h2>How to use Jarvis Web</h2>
-<p>Open index.html in the repository. Have fun.</p>
+<p>Open the "index.html" using Google Chrome. Have fun.</p>
+
+<hr/>
 
 <p>
 Developers: Leo Jiang, Rich Cherngchaosil, Rohit Verma<br/>

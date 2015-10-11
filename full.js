@@ -241,9 +241,9 @@ if(typeof Leap=="undefined"){
                 state = -1;
             }
              // $(window).trigger("j-zoom",parseFloat(hand.pinchStrength.toPrecision(2))-100*-1)
-            //  if(parseFloat(hand.pinchStrength.toPrecision(2))*100 > 20 && state != -1) {
-            //   $(window).trigger("j-zoom",parseFloat(hand.pinchStrength.toPrecision(2))*100);
-            // }  
+             if(parseFloat(hand.pinchStrength.toPrecision(2))*100 > 20 && state !== -1) {
+              $(window).trigger("j-zoom",parseFloat(hand.pinchStrength.toPrecision(2))*100);
+            }  
           }
       });
 

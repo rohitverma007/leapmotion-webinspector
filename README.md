@@ -1,6 +1,6 @@
-# 3D Web Inspector
+# Jarvis Web
 
-<p>3D Web Inspector lets you visualize and interact the DOM of any website by using your hands. Your hand gestures are recognized by Leap Motion. This inspector was created during Cal Hacks 2015.</p>
+<p>Jarvis Web lets you visualize and interact the DOM of any website by using your hands. Your hand gestures are recognized by Leap Motion. This inspector was created during Cal Hacks 2015.</p>
 
 <h2>How to install Jarvis Web</h2>
 <ol>

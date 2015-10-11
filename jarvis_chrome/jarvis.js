@@ -178,7 +178,7 @@ html,body{padding:0 !important;background:none !important;}
     var state = -1;
     var fist = 0;
 /*************************************Scrolling*********************************************************/
-var runScript=function(){
+
     var e={};
     var t={};
     var n=document.body;
@@ -205,8 +205,7 @@ var runScript=function(){
 
 
         }
-    })
-}
+    });
 
 
 

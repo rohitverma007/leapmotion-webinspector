@@ -61,7 +61,7 @@
         }
 
         // Check for blacklisted sites
-        var blacklistedSites = ["facebook", "twitter"];
+        var blacklistedSites = ["facebook", "twitter", "maps.google.com"];
         var isBlacklisted = false;
         for (var i = 0; i < blacklistedSites.length; i++) {
           if (destinationURL.indexOf(blacklistedSites[i]) > 0) {

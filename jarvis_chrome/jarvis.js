@@ -143,9 +143,9 @@ html,body{padding:0 !important;background:none !important;}
 		else if(e.which===68)
 			transform.rotateY+=5;
 		
-		else if(e.which===33||e.which===46) // increase height
+		else if(e.which===33||e.which===190) // increase height
 			transform.extrude+=5;
-		else if(e.which===34||e.which===44) // decrease height
+		else if(e.which===34||e.which===188) // decrease height
 			transform.extrude=Math.max(0,transform.extrude-5);
 		else if(e.which===189) // zoom out
 			transform.zoom-=0.1;

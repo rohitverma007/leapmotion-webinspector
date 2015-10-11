@@ -182,7 +182,7 @@ html,body{padding:0 !important;background:none !important;}
     var e={};
     var t={};
     var n=document.body;
-    Leap.loop(function(t){
+    var doScroll=function(t){
         var r={};
         var i={};
         for(var s=0, o=t.pointables.length; s!=o; s++){
@@ -213,7 +213,7 @@ html,body{padding:0 !important;background:none !important;}
 
 
         }
-    });
+    };
 
 
 
@@ -268,7 +268,7 @@ html,body{padding:0 !important;background:none !important;}
         // output4.innerHTML = "Y - delta: " + deltaY;
     };
 
-    Leap.loop({},function (frame) {
+    var doRotate=function (frame) {
 
             switch(state) {
                 case 1:
@@ -296,15 +296,15 @@ html,body{padding:0 !important;background:none !important;}
                 default:
             }
 
-        });
+        };
 
 /******************************************Zoom*********************************************************/
 
 
-    //Leap.loop(function(t){
-    //});   
-      Leap.loop({}, {
-          hand: function(hand) {    
+      var doZoom=function(frame) { 
+      	if(!frame.hands().length)
+      		return;
+      	var hand=frame.hands()[0];
           //console.log(hand.grabStrength * 100);   
           // console.log(hand.grabStrength * 100);
             if(hand.grabStrength * 100 < 95 && hand.grabStrength * 100 > 0){
@@ -326,23 +326,12 @@ html,body{padding:0 !important;background:none !important;}
               $(window).trigger("j-zoom",parseFloat(hand.pinchStrength.toPrecision(2))*100);
             }  
           }
-      });
+      };
 
-
-	
-/*********************************Pointer*********************************/	
-	// Leap.loop({},function(frame){
-	// 	if(frame.pointables.length===1){
-	// 		var pos=frame.pointables[0].tipPosition;
-	// 		if(pos[2]<50&&pos[2]>-50
-	// 			&&pos[0]>-100&&pos[0]<100
-	// 			&&pos[1]>-100&&pos[1]<100){
-	// 			$(window).trigger('j-point',{
-	// 				x:(pos[0]+100)/2,
-	// 				y:(pos[1]+100)/2
-	// 			});
-	// 		}
-	// 	}
-	// });
+	Leap.loop({},frame => {
+		doScroll(frame);
+		doRotate(frame);
+		doZoom(frame);
+	});
 	});
 })();
